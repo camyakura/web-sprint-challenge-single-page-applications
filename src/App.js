@@ -6,7 +6,7 @@ import Confirmation from './components/Confirmation'
 import axios from 'axios';
 import schema from './validation/pizzaSchema'
 import * as yup from 'yup';
-import { ValidationError } from "yup";
+
 
 
   const initialPizzaValues = {
@@ -30,6 +30,7 @@ import { ValidationError } from "yup";
 
 export default function App () {
 
+  const [order, setOrder] = useState([])
   const [pizzaValues, setPizzaValues] = useState(initialPizzaValues)
   const [pizzaErrors, setPizzaErrors] = useState(initialPizzaErrors)
   const [disabled, setDisabled] = useState(true)
@@ -37,7 +38,8 @@ export default function App () {
   const getPizza = newPizza => {
     axios.post('https://reqres.in/api/orders', newPizza)
       .then(res => {
-        console.log(res)
+        setOrder(res.data)
+        setPizzaErrors(initialPizzaErrors)
       })
       .catch(err => console.log(err))
   }
@@ -84,7 +86,7 @@ export default function App () {
       
       <Switch>
         <Route path='/pizza-confirmation'>
-          <Confirmation />
+          <Confirmation orders={order}/>
         </Route>
         <Route path='/pizza'>
           <PizzaForm 
