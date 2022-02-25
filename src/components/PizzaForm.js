@@ -107,6 +107,7 @@ export default function PizzaForm (props){
                         <input 
                             type='checkbox'
                             name='pepperoni'
+                            id='topping'
                             checked={values.pepperoni}
                             onChange={onChange}
                         />
@@ -118,6 +119,7 @@ export default function PizzaForm (props){
                             name='sausage'
                             checked={values.sausage}
                             onChange={onChange}
+                            id='topping'
                         />
                         Sausage
                     </label>
@@ -127,6 +129,7 @@ export default function PizzaForm (props){
                             name='bacon'
                             checked={values.bacon}
                             onChange={onChange}
+                            id='topping'
                         />
                         Canadian Bacon
                     </label>
@@ -136,6 +139,7 @@ export default function PizzaForm (props){
                             name='chicken'
                             checked={values.chicken}
                             onChange={onChange}
+                            id='topping'
                         />
                         Grilled Chicken
                     </label>
@@ -145,6 +149,7 @@ export default function PizzaForm (props){
                             name='pineapple'
                             checked={values.pineapple}
                             onChange={onChange}
+                            id='topping'
                         />
                         Pineapple
                     </label>
