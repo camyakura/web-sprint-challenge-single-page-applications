@@ -1,11 +1,29 @@
 import React from "react";
+import axios from 'axios';
+import {Route, Link, Switch} from 'react-router-dom'
 
-const App = () => {
+export default function App () {
   return (
     <>
       <h1>Lambda Eats</h1>
-      <p>You can remove this code and create your own header</p>
+      <nav>
+        <Link to='/'>Home</Link>
+        <Link to='/'>Help</Link>
+      </nav>
+
+      <Switch>
+        <Route path='/pizza-confirmation'>
+          <Confirmation />
+        </Route>
+        <Route path='/pizza'>
+          <PizzaForm/>
+        </Route>
+        <Route path='/'>
+          <Home/>
+        </Route>
+      </Switch>
     </>
+
   );
-};
-export default App;
+}
+
