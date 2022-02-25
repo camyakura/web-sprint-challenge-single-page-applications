@@ -28,11 +28,13 @@ export default function PizzaForm (props){
                 <div className='form-inputs'>
                     <h3>Build Your Own Pizza</h3>
                     <label>Enter Name
+                        <p>{errors.name}</p>
                         <input 
                             id='name-input'
                             type='text'
                             name='name'
                             value={values.name}
+                            onChange={onChange}
                         />
                     </label>
                     <div>
@@ -57,7 +59,7 @@ export default function PizzaForm (props){
                         <h3>Choice of Sauce</h3>
                         <p>{errors.sauce}</p>
                     </div>
-                    <label>Original Red
+                    <label>
                         <input 
                             type='radio'
                             name='sauce'
@@ -65,8 +67,9 @@ export default function PizzaForm (props){
                             onChange={onChange}
                             checked={values.sauce === 'red'}
                         />
+                        Original Red
                     </label>
-                    <label>Garlic Ranch
+                    <label>
                         <input 
                             type='radio'
                             name='sauce'
@@ -74,8 +77,9 @@ export default function PizzaForm (props){
                             onChange={onChange}
                             checked={values.sauce === 'garlic'}
                         />
+                        Garlic Ranch
                     </label>
-                    <label>BBQ Sauce
+                    <label>
                         <input 
                             type='radio'
                             name='sauce'
@@ -83,8 +87,9 @@ export default function PizzaForm (props){
                             onChange={onChange}
                             checked={values.sauce === 'bbq'}
                         />
+                        BBQ Sauce
                     </label>
-                    <label>Spinach Alfredo
+                    <label>
                         <input 
                             type='radio'
                             name='sauce'
@@ -92,50 +97,56 @@ export default function PizzaForm (props){
                             onChange={onChange}
                             checked={values.sauce === 'alfredo'}
                         />
+                        Spinach Alfredo
                     </label>
                     <div>
                         <h3>Add Toppings</h3>
                         <p>Choose up to 5</p>
                     </div>
-                    <label>Pepperoni
+                    <label>
                         <input 
                             type='checkbox'
                             name='pepperoni'
                             checked={values.pepperoni}
                             onChange={onChange}
                         />
+                        Pepperoni
                     </label>
-                    <label>Sausage
+                    <label>
                         <input 
                             type='checkbox'
                             name='sausage'
                             checked={values.sausage}
                             onChange={onChange}
                         />
+                        Sausage
                     </label>
-                    <label>Canadian Bacon
+                    <label>
                         <input 
                             type='checkbox'
                             name='bacon'
                             checked={values.bacon}
                             onChange={onChange}
                         />
+                        Canadian Bacon
                     </label>
-                    <label>Grilled Chicken
+                    <label>
                         <input 
                             type='checkbox'
                             name='chicken'
                             checked={values.chicken}
                             onChange={onChange}
                         />
+                        Grilled Chicken
                     </label>
-                    <label>Pineapple
+                    <label>
                         <input 
                             type='checkbox'
                             name='pineapple'
                             checked={values.pineapple}
                             onChange={onChange}
                         />
+                        Pineapple
                     </label>
                     <label>
                         <input 

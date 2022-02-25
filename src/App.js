@@ -4,6 +4,9 @@ import Home from './components/Home';
 import PizzaForm from './components/PizzaForm';
 import Confirmation from './components/Confirmation'
 import axios from 'axios';
+import schema from './validation/pizzaSchema'
+import * as yup from 'yup';
+import { ValidationError } from "yup";
 
 
   const initialPizzaValues = {
@@ -31,8 +34,23 @@ export default function App () {
   const [pizzaErrors, setPizzaErrors] = useState(initialPizzaErrors)
   const [disabled, setDisabled] = useState(true)
 
+  const getPizza = newPizza => {
+    axios.post('https://reqres.in/api/orders', newPizza)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => console.log(err))
+  }
+
+  const validate = (name, value) => {
+    yup.reach(schema, name)
+      .validate(value)
+      .then(() => setPizzaErrors({...pizzaErrors, [name]: ''}))
+      .catch(err => setPizzaErrors({...pizzaErrors, [name]: err.errors[0]}))
+  }
 
   const inputChange = (name, value) => {
+    validate(name, value)
     setPizzaValues({...pizzaValues, [name]: value})
   }
 
@@ -46,9 +64,13 @@ export default function App () {
       bacon: pizzaValues.bacon,
       chicken: pizzaValues.chicken,
       pineapple: pizzaValues.pineapple,
-
     }
+    getPizza(newPizza)
   } 
+
+  useEffect(() => {
+    schema.isValid(pizzaValues).then( valid => setDisabled(!valid))
+  }, [pizzaValues])
 
   return (
     <>

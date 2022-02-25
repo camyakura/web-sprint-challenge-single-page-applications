@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-const pizzaSchema = yup.object().shape(){
+const pizzaSchema = yup.object().shape({
     name: yup
         .string()
         .trim()
@@ -19,4 +19,7 @@ const pizzaSchema = yup.object().shape(){
     bacon: yup.boolean(),
     chicken: yup.boolean(),
     pineapple: yup.boolean(),
-}
+    special: yup.string().trim()
+})
+
+export default pizzaSchema
